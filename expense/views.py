@@ -10,6 +10,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter
 from .filters import ExpenseFilter
 
+from .pagination import ExpensePagination
+
 # View to list user expenses
 # Only authenticated user/Logged in user can view their expenses
 # Providing custom filter functionality to ensuring both ordering and filtering
@@ -19,6 +21,9 @@ class ExpenseListCreateView(generics.ListCreateAPIView):
     filterset_class = ExpenseFilter # Using Custom filter
     filter_backends = [DjangoFilterBackend, OrderingFilter] # Filtering and Ordering
     ordering_fields = ['created_at', 'amount']
+
+    # Adding custom pagination
+    pagination_class = ExpensePagination
 
     # Providing user level isolation 
     def get_queryset(self):
