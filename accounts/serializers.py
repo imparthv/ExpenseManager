@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 
 # Creating a serializer to validate user , hash password and store user
-class RegisterSerializer(serializers.Serializer):
+class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     email = serializers.EmailField(required=True)
 
