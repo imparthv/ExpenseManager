@@ -1,0 +1,21 @@
+from django.contrib.auth.models import User
+from rest_framework import serializers
+
+
+# Creating a serializer to validate user , hash password and store user
+class RegisterSerializer(serializers.Serializer):
+    password = serializers.CharField(write_only=True)
+    email = serializers.EmailField(required=True)
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password')
+
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            password=validated_data['password']
+        )
+
+        return user
