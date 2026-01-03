@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     # Local Apps
     'accounts',
     'expense',
+
+    # REST
+    'rest_framwork'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +60,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
 
 ROOT_URLCONF = 'expensemanager.urls'
 
