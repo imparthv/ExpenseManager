@@ -4,4 +4,4 @@ from rest_framework.pagination import PageNumberPagination
 class ExpensePagination(PageNumberPagination):
     page_size = 2 # Max items per page
     max_page_size = 100 # Max number of pages user can request
-    page_query_param = 'page_size'
+    page_size_query_param = 'page_size' # Number of items per page
