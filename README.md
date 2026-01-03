@@ -1,0 +1,1 @@
+This is simple project made using Django, Rest and Bootstrap.
