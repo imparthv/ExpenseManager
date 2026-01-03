@@ -14,12 +14,16 @@ from .pagination import ExpensePagination
 
 # View to list user expenses
 # Only authenticated user/Logged in user can view their expenses
-# Providing custom filter functionality to ensuring both ordering and filtering
+# Providing custom filter functionality to filter based on date and category
+# Sorting based on created date and amount
+# Custom pagination class
 class ExpenseListCreateView(generics.ListCreateAPIView):
     serializer_class = ExpenseSerializer
     permission_classes = [IsAuthenticated]
     filterset_class = ExpenseFilter # Using Custom filter
     filter_backends = [DjangoFilterBackend, OrderingFilter] # Filtering and Ordering
+
+    # Sorting based on date and amount
     ordering_fields = ['created_at', 'amount']
 
     # Adding custom pagination
