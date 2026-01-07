@@ -1,0 +1,14 @@
+services:
+  web:
+    build: . 
+    image: django-expense-manager
+    container_name: expense-manager-app
+    env_file:
+      - .env
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+    - "8000:8000"
+    volumes:
+    - .:/app
+
+
